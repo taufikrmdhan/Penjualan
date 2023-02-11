@@ -42,6 +42,17 @@ const barangController = {
                 failed(res, err, 'failed', 'failed get data');
             });
     },
+    listByname: (req, res) => {
+        const { nama_barang } = req.params;
+        barangModel
+            .listByname(nama_barang)
+            .then((result) => {
+                success(res, result, 'success', 'success get data');
+            })
+            .catch((err) => {
+                failed(res, err, 'failed', 'failed get data');
+            });
+    },
     update: (req, res) => {
         const { id_barang } = req.params;
         const {
@@ -67,7 +78,8 @@ const barangController = {
             .catch((err) => {
                 failed(res, err, 'failed', 'failed delete data');
             });
-    }
+    },
+
 };
 module.exports = barangController;
 // const userController = {

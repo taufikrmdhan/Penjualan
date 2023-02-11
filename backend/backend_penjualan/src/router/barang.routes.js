@@ -1,6 +1,6 @@
 const express = require('express');
 const {
-    insert, list, listBarangById, update, destroy,
+    insert, list, listBarangById, update, destroy,listByname
 } = require('../controller/barang.controller');
 // const {
 //   insert, list, update, destroy, listUserById, updateByEmail
@@ -17,6 +17,7 @@ const router = express.Router();
 router
     .get('/barang/list', list)
     .get('/barang/list/:id_barang', listBarangById)
+    .get('/barang/list/search/:nama_barang', listByname)
     .post('/barang/add',upload, insert)
     .put('/barang/update/:id_barang',deleted,upload, update)
     .delete('/barang/delete/:id_barang',deleted, destroy);
