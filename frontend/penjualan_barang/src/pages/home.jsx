@@ -24,7 +24,7 @@ const Home = () => {
             .delete(`http://localhost:4000/barang/delete/${id_barang}`)
             .then((res) => {
                 alert("Data berhasil dihapus");
-                navigate("/");
+                setData(data.filter((item) => item.id_barang !== id_barang));
             })
             .catch((err) => {
                 console.log(err);
