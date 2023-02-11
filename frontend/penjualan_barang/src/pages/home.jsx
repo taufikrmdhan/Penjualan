@@ -70,6 +70,23 @@ const Home = () => {
     if (currentPage !== 1) {
         startNumber = (currentPage - 1) * 3 + 1;
     }
+
+    const [namaBarang, setNamaBarang] = useState("");
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (namaBarang !== "") {
+            axios
+            .get(`http://localhost:4000/barang/list/search/${namaBarang}`)
+            .then((res) => {
+                setData(res.data.data.rows);
+                // navigate ke halaman dengan parameter nama barang
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        }
+    };
     return (
         <>
         <div className="container-fluid">
@@ -81,6 +98,19 @@ const Home = () => {
                     <i className="fa fa-plus "></i> Add Barang
                 </button>
                 </Link>
+            </div>
+            {/* search barang */}
+            <div className="col-md-12">
+                <form onSubmit={(e)=>handleSearch(e)}>
+                <div className="input-group mb-3">
+                    <input 
+                    onChange={(e)=>setNamaBarang(e.target.value)}
+                    type="text" className="form-control" placeholder="Search Barang" aria-label="Search Barang" aria-describedby="button-addon2"
+                    name="nama_barang"
+                    />
+                    <button className="btn btn-dark" type="button" id="button-addon2">Search</button>
+                </div>
+                </form>
             </div>
             <div className="col-md-12">
                 <table className="table table-bordered">
