@@ -142,7 +142,7 @@ const Home = () => {
                                         <td className="fs-5">{item.harga_beli}</td>
                                         <td className="fs-5">{item.stok}</td>
                                         <td className="text-center">
-                                            <img src={`http://localhost:4000/${item.foto_barang}`} width="100" height="100" alt="foto_barang" />
+                                            <img src={`${item.foto_barang}`} width="100" height="100" alt="foto_barang" />
                                         </td>
                                         <td>
                                             {/* <Link to={`/update/${item.id_barang}`} */}
