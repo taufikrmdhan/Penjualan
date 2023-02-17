@@ -9,7 +9,8 @@ const Home = () => {
     
     useEffect(() => {
         axios
-        .get("http://localhost:4000/barang/list")
+        // .get("http://localhost:4000/barang/list")
+        .get(`${process.env.REACT_APP_API_URL}/barang/list`)
         .then((res) => {
             setData(res.data.data.rows);
         })
@@ -21,7 +22,8 @@ const Home = () => {
     const deleteBarang = (id_barang) => {
         if (window.confirm("Apakah anda yakin ingin menghapus data ini?")) {
             axios
-            .delete(`http://localhost:4000/barang/delete/${id_barang}`)
+            // .delete(`http://localhost:4000/barang/delete/${id_barang}`)
+            .delete(`${process.env.REACT_APP_API_URL}/barang/delete/${id_barang}`)
             .then((res) => {
                 alert("Data berhasil dihapus");
                 setData(data.filter((item) => item.id_barang !== id_barang));
@@ -38,7 +40,8 @@ const Home = () => {
         if (currentPage < 5) {
             setCurrentPage(currentPage + 1);
             axios
-            .get(`http://localhost:4000/barang/list?page=${currentPage}`)
+            // .get(`http://localhost:4000/barang/list?page=${currentPage}`)
+            .get(`${process.env.REACT_APP_API_URL}/barang/list?page=${currentPage}`)
             .then((res) => {
                 setData(res.data.data.rows);
             }
@@ -54,7 +57,8 @@ const Home = () => {
         if (currentPage > 1) {
             setCurrentPage(currentPage - 1);
             axios
-            .get(`http://localhost:4000/barang/list?page=${currentPage}`)
+            // .get(`http://localhost:4000/barang/list?page=${currentPage}`)
+            .get(`${process.env.REACT_APP_API_URL}/barang/list?page=${currentPage}`)
             .then((res) => {
                 setData(res.data.data.rows);
             }
@@ -77,7 +81,8 @@ const Home = () => {
         e.preventDefault();
         if (namaBarang !== "") {
             axios
-            .get(`http://localhost:4000/barang/list/search/${namaBarang}`)
+            // .get(`http://localhost:4000/barang/list/search/${namaBarang}`)
+            .get(`${process.env.REACT_APP_API_URL}/barang/list/search/${namaBarang}`)
             .then((res) => {
                 setData(res.data.data.rows);
                 // navigate ke halaman dengan parameter nama barang

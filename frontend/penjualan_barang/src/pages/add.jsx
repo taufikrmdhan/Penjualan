@@ -11,7 +11,8 @@ const Add = () => {
     };
     const handlePost = (form) => {
         axios
-        .post("http://localhost:4000/barang/add", form)
+        // .post("http://localhost:4000/barang/add", form)
+        .post(`${process.env.REACT_APP_API_URL}/barang/add`, form)
         .then((res) => {
             console.log(res);
             alert("Data berhasil ditambahkan");

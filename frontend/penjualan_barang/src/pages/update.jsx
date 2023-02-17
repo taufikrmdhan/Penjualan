@@ -18,7 +18,8 @@ const Update = () => {
 
   const handleUpdate = (form) => {
     axios
-      .put(`http://localhost:4000/barang/update/${idBarang}`, form,
+      // .put(`http://localhost:4000/barang/update/${idBarang}`, form,
+      .put(`${process.env.REACT_APP_API_URL}/barang/update/${idBarang}`, form,
       {
         headers: {
             "Content-Type": "multipart/form-data",
